@@ -1,0 +1,1629 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sofex Soap &amp; Chemical Industries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* ============================================================
+   Tokens — light is the base, dark redefines the same names
+   ============================================================ */
+:root{
+  --bg:#FFFFFF;
+  --bg-sub:#FAFAFA;
+  --panel:#FFFFFF;
+  --panel-2:#F6F6F7;
+  --panel-3:#EFEFF1;
+  --line:#E6E6E9;
+  --line-2:#D6D6DB;
+  --fg:#09090B;
+  --fg-2:#3F3F46;
+  --muted:#71717A;
+  --faint:#A1A1AA;
+
+  --lemon:#C98A00;
+  --lemon-bg:#FEF6E0;
+  --lemon-line:#F0DCA8;
+  --leaf:#2E7D3A;
+  --leaf-bg:#EAF6EC;
+  --leaf-line:#BFE0C6;
+
+  --brand-ink:#141C3A;
+  --glow-a:rgba(246,197,68,.20);
+  --glow-b:rgba(85,193,107,.14);
+
+  --btn-fg:#FAFAFA;
+  --btn-bg:#111113;
+  --btn-bg-h:#000000;
+
+  --shadow-sm:0 1px 2px rgba(9,9,11,.05);
+  --shadow:0 1px 2px rgba(9,9,11,.06), 0 8px 24px -14px rgba(9,9,11,.18);
+  --shadow-lg:0 1px 3px rgba(9,9,11,.08), 0 24px 56px -28px rgba(9,9,11,.30);
+
+  --r-xs:7px; --r-sm:10px; --r:13px; --r-lg:18px; --r-xl:26px;
+  --display:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --wrap:1128px;
+  --hair:1px solid var(--line);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#08080A;
+    --bg-sub:#0B0B0D;
+    --panel:#101012;
+    --panel-2:#17171A;
+    --panel-3:#1E1E22;
+    --line:#232327;
+    --line-2:#32323A;
+    --fg:#ECECEE;
+    --fg-2:#B4B4BC;
+    --muted:#84848E;
+    --faint:#5C5C66;
+
+    --lemon:#F6C544;
+    --lemon-bg:#1F1A0B;
+    --lemon-line:#3D3316;
+    --leaf:#5FC97A;
+    --leaf-bg:#0E1C12;
+    --leaf-line:#1E3826;
+
+    --brand-ink:#ECECEE;
+    --glow-a:rgba(246,197,68,.13);
+    --glow-b:rgba(85,193,107,.09);
+
+    --btn-fg:#09090B;
+    --btn-bg:#F4F4F5;
+    --btn-bg-h:#FFFFFF;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -14px rgba(0,0,0,.8);
+    --shadow-lg:0 1px 3px rgba(0,0,0,.6), 0 24px 56px -28px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08080A;
+  --bg-sub:#0B0B0D;
+  --panel:#101012;
+  --panel-2:#17171A;
+  --panel-3:#1E1E22;
+  --line:#232327;
+  --line-2:#32323A;
+  --fg:#ECECEE;
+  --fg-2:#B4B4BC;
+  --muted:#84848E;
+  --faint:#5C5C66;
+
+  --lemon:#F6C544;
+  --lemon-bg:#1F1A0B;
+  --lemon-line:#3D3316;
+  --leaf:#5FC97A;
+  --leaf-bg:#0E1C12;
+  --leaf-line:#1E3826;
+
+  --brand-ink:#ECECEE;
+  --glow-a:rgba(246,197,68,.13);
+  --glow-b:rgba(85,193,107,.09);
+
+  --btn-fg:#09090B;
+  --btn-bg:#F4F4F5;
+  --btn-bg-h:#FFFFFF;
+
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -14px rgba(0,0,0,.8);
+  --shadow-lg:0 1px 3px rgba(0,0,0,.6), 0 24px 56px -28px rgba(0,0,0,.9);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--body); font-size:15px; line-height:1.6;
+  letter-spacing:-.006em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--display); font-weight:600; letter-spacing:-.028em; margin:0; line-height:1.1; text-wrap:balance}
+p{margin:0}
+a{color:inherit; text-decoration:none}
+img,svg{max-width:100%; height:auto; display:block}
+button{font:inherit; cursor:pointer; border:none; background:none; color:inherit; letter-spacing:inherit}
+input,select,textarea{font:inherit; color:inherit; letter-spacing:inherit}
+:focus-visible{outline:2px solid var(--lemon); outline-offset:2px; border-radius:6px}
+::selection{background:var(--lemon); color:#09090B}
+
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.tnum{font-variant-numeric:tabular-nums}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted);
+}
+.eyebrow::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--lemon)}
+.rule{height:1px; background:var(--line); border:0; margin:0}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:7px;
+  height:38px; padding:0 16px; border-radius:var(--r-sm);
+  font-size:13.5px; font-weight:500; letter-spacing:-.01em;
+  border:1px solid transparent; white-space:nowrap;
+  transition:background .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
+}
+.btn svg{flex-shrink:0}
+.btn-primary{background:var(--btn-bg); color:var(--btn-fg)}
+.btn-primary:hover{background:var(--btn-bg-h)}
+.btn-accent{background:var(--lemon); color:#1A1400; font-weight:600}
+.btn-accent:hover{filter:brightness(1.08)}
+.btn-line{border-color:var(--line-2); color:var(--fg); background:var(--panel)}
+.btn-line:hover{background:var(--panel-2); border-color:var(--muted)}
+.btn-quiet{color:var(--fg-2)}
+.btn-quiet:hover{background:var(--panel-2); color:var(--fg)}
+.btn-wa{background:#22A94E; color:#fff; font-weight:600}
+.btn-wa:hover{background:#1B8F41}
+.btn-sm{height:32px; padding:0 12px; font-size:12.5px; border-radius:8px}
+.btn-lg{height:44px; padding:0 20px; font-size:14.5px; border-radius:11px}
+.btn-block{width:100%}
+.btn[aria-disabled="true"]{opacity:.4; pointer-events:none}
+
+/* ============================================================
+   Header
+   ============================================================ */
+header.site{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:80;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(16px) saturate(1.5);
+  border-bottom:var(--hair);
+}
+.hbar{display:flex; align-items:center; gap:14px; height:58px}
+.brand{display:flex; align-items:center; gap:9px; flex-shrink:0}
+.brand .logo{width:28px; height:28px; flex-shrink:0}
+.brand .txt{display:flex; flex-direction:column; justify-content:center; line-height:1}
+.brand .wm{font-family:var(--display); font-weight:700; font-size:16.5px; letter-spacing:-.04em}
+.brand .sub{font-family:var(--mono); font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:3px}
+nav.main{display:flex; gap:2px; margin-left:16px}
+nav.main a{
+  font-size:13.5px; font-weight:450; color:var(--muted);
+  padding:7px 10px; border-radius:8px; transition:color .14s, background .14s;
+}
+nav.main a:hover{color:var(--fg); background:var(--panel-2)}
+.hactions{display:flex; align-items:center; gap:7px; margin-left:auto}
+.icon-btn{
+  width:32px; height:32px; border-radius:8px; border:var(--hair);
+  display:grid; place-items:center; color:var(--muted); background:var(--panel);
+  transition:color .14s, background .14s, border-color .14s;
+}
+.icon-btn:hover{color:var(--fg); background:var(--panel-2); border-color:var(--line-2)}
+#nav-toggle{display:none}
+.moon{display:none}
+:root[data-theme="dark"] .sun{display:none}
+:root[data-theme="dark"] .moon{display:block}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .sun{display:none}
+  :root:not([data-theme="light"]) .moon{display:block}
+}
+
+.mobnav{display:none; border-bottom:var(--hair); background:var(--bg)}
+.mobnav[data-open="true"]{display:block}
+.mobnav a{display:block; padding:12px 24px; font-size:15px; color:var(--fg-2); border-bottom:var(--hair)}
+.mobnav a:last-child{border-bottom:0}
+.mobnav a:active{background:var(--panel-2)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative; overflow:hidden; border-bottom:var(--hair)}
+.hero::before{
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:150%;
+  background:radial-gradient(52% 46% at 50% 8%, var(--glow-a) 0%, transparent 70%),
+             radial-gradient(40% 40% at 86% 62%, var(--glow-b) 0%, transparent 72%);
+  pointer-events:none;
+}
+.hero-in{position:relative; display:grid; grid-template-columns:1fr 430px; gap:56px; align-items:center; padding-block:76px 72px}
+.badge-row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:22px}
+.tag{
+  display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
+  border-radius:100px; border:var(--hair); background:var(--panel);
+  font-size:11.5px; font-weight:500; color:var(--fg-2); letter-spacing:-.005em;
+}
+.tag .dot{width:5px; height:5px; border-radius:50%; background:var(--leaf)}
+.hero h1{font-size:clamp(2.3rem,5vw,3.4rem); font-weight:600; letter-spacing:-.04em; line-height:1.04}
+.hero h1 .hl{
+  background:linear-gradient(100deg, var(--lemon), var(--leaf));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero .lede{font-size:16.5px; color:var(--muted); margin-top:20px; max-width:52ch; line-height:1.65}
+.hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:30px}
+.hero-stats{display:flex; gap:0; margin-top:38px; border-top:var(--hair); padding-top:22px; flex-wrap:wrap}
+.hstat{padding-right:32px; margin-right:32px; border-right:var(--hair)}
+.hstat:last-child{border-right:0; padding-right:0; margin-right:0}
+.hstat .v{font-family:var(--display); font-weight:600; font-size:22px; letter-spacing:-.035em}
+.hstat .l{font-size:12px; color:var(--muted); margin-top:1px}
+
+.hero-stage{position:relative}
+.stage-card{
+  position:relative; border:var(--hair); border-radius:var(--r-xl); overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 50% 0%, var(--panel-2), var(--panel) 72%);
+  box-shadow:var(--shadow-lg);
+}
+.stage-card::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+  background-size:22px 22px; opacity:.55;
+}
+.stage-card svg.product{position:relative; z-index:1; display:block; height:392px; width:auto; margin:24px auto 18px}
+.stage-card img.product{position:relative; z-index:1; display:block; height:392px; width:auto; max-width:88%; margin:24px auto 18px; object-fit:contain; border-radius:14px; filter:drop-shadow(0 18px 30px rgba(9,9,11,.16))}
+.stage-meta{
+  position:relative; z-index:2; border-top:var(--hair); background:color-mix(in srgb,var(--panel) 92%,transparent);
+  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 18px;
+  backdrop-filter:blur(8px);
+}
+.stage-meta .nm{font-size:13px; font-weight:500}
+.stage-meta .nm span{display:block; font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:2px; letter-spacing:.02em}
+.stage-meta .pr{font-family:var(--display); font-weight:600; font-size:20px; letter-spacing:-.035em}
+.stage-meta .pr small{font-size:11px; color:var(--muted); font-weight:500}
+
+/* ============================================================
+   Logo strip / credentials
+   ============================================================ */
+.creds{border-bottom:var(--hair); background:var(--bg-sub)}
+.creds-in{display:grid; grid-template-columns:repeat(4,1fr)}
+.cred{padding:26px 26px 26px 0; border-right:var(--hair)}
+.cred:first-child{padding-left:0}
+.cred:not(:first-child){padding-left:26px}
+.cred:last-child{border-right:0; padding-right:0}
+.cred .ic{color:var(--lemon); margin-bottom:11px}
+.cred .k{font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:-.025em}
+.cred .t{font-size:13px; color:var(--muted); margin-top:4px; line-height:1.5}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section{scroll-margin-top:72px}
+.sec{padding-block:84px; border-bottom:var(--hair)}
+.sec.tight{padding-block:64px}
+.sec-head{max-width:60ch}
+.sec-head h2{font-size:clamp(1.55rem,3vw,2.1rem); margin-top:14px; font-weight:600}
+.sec-head p{color:var(--muted); margin-top:14px; font-size:15.5px; line-height:1.68}
+.sec-head.center{margin-inline:auto; text-align:center}
+.sec-head.center .eyebrow{justify-content:center}
+
+/* ---------- flagship ---------- */
+.flag-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; margin-top:44px}
+.swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.swatch{
+  border:var(--hair); border-radius:var(--r); overflow:hidden; background:var(--panel);
+  transition:border-color .15s, transform .15s;
+}
+.swatch:hover{border-color:var(--line-2); transform:translateY(-2px)}
+.swatch .art{display:grid; place-items:center; padding:16px 10px 8px; background:var(--panel-2)}
+.swatch .art svg{height:136px; width:auto}
+.swatch .cap{padding:9px 11px 11px; border-top:var(--hair)}
+.swatch .cap b{display:block; font-size:12.5px; font-weight:500}
+.swatch .cap span{font-family:var(--mono); font-size:9.5px; color:var(--muted)}
+.feats{display:grid; gap:2px; margin-top:6px}
+.feat{display:grid; grid-template-columns:28px 1fr; gap:13px; padding:15px 0; border-bottom:var(--hair); align-items:start}
+.feat:first-child{border-top:var(--hair)}
+.feat .ic{width:28px; height:28px; border-radius:8px; display:grid; place-items:center; background:var(--leaf-bg); color:var(--leaf); border:1px solid var(--leaf-line)}
+.feat b{display:block; font-size:14px; font-weight:500}
+.feat span{display:block; font-size:13.5px; color:var(--muted); line-height:1.6; margin-top:3px}
+.specs{margin-top:26px; border-top:var(--hair)}
+.specs div{display:flex; justify-content:space-between; gap:20px; padding:10px 0; border-bottom:var(--hair); font-size:13.5px}
+.specs dt{color:var(--muted); margin:0}
+.specs dd{margin:0; font-weight:500; text-align:right; font-variant-numeric:tabular-nums}
+
+.flag-lifestyle{position:relative; margin-top:44px; border-radius:var(--r-xl); overflow:hidden; border:var(--hair); box-shadow:var(--shadow)}
+.flag-lifestyle img{display:block; width:100%; height:clamp(220px,32vw,420px); object-fit:cover}
+.flag-lifestyle .cap{
+  position:absolute; left:0; right:0; bottom:0; z-index:2; padding:34px 22px 16px;
+  background:linear-gradient(0deg, rgba(0,0,0,.62), rgba(0,0,0,0));
+  color:#fff; font-size:14px; font-weight:500; letter-spacing:-.01em; max-width:56ch;
+}
+
+/* ---------- catalog ---------- */
+.toolbar{
+  display:flex; gap:10px; align-items:center; margin-top:34px; margin-bottom:22px; flex-wrap:wrap;
+  position:sticky; top:calc(58px + env(safe-area-inset-top,0px)); z-index:40;
+  background:color-mix(in srgb,var(--bg) 88%, transparent); backdrop-filter:blur(12px);
+  padding-block:10px; margin-inline:-4px; padding-inline:4px;
+}
+.chips{display:flex; gap:6px; flex-wrap:wrap; flex:1; min-width:0}
+.chip{
+  height:31px; padding:0 12px; border-radius:100px; border:var(--hair); background:var(--panel);
+  font-size:12.5px; font-weight:450; color:var(--muted);
+  transition:color .14s, border-color .14s, background .14s;
+}
+.chip:hover{color:var(--fg); border-color:var(--line-2)}
+.chip[aria-pressed="true"]{background:var(--fg); color:var(--bg); border-color:var(--fg); font-weight:500}
+.search{
+  display:flex; align-items:center; gap:8px; height:31px; padding:0 12px;
+  border:var(--hair); border-radius:100px; background:var(--panel); min-width:206px; color:var(--muted);
+}
+.search:focus-within{border-color:var(--line-2)}
+.search input{border:none; background:none; outline:none; font-size:12.5px; width:100%; color:var(--fg)}
+.search input::placeholder{color:var(--faint)}
+
+.grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.card{
+  border:var(--hair); border-radius:var(--r); background:var(--panel); overflow:hidden;
+  display:flex; flex-direction:column; transition:border-color .16s, box-shadow .16s, transform .16s;
+}
+.card:hover{border-color:var(--line-2); box-shadow:var(--shadow); transform:translateY(-2px)}
+.card .art{
+  position:relative; min-height:172px; display:grid; place-items:center;
+  padding:14px 12px 6px; background:var(--panel-2); border-bottom:var(--hair);
+}
+.card .art::before{
+  content:""; position:absolute; inset:0;
+  background-image:radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+  background-size:18px 18px; opacity:.6;
+}
+.card .art svg{position:relative; z-index:1; height:152px; width:auto}
+.card .sku{
+  position:absolute; top:9px; left:10px; z-index:2; font-family:var(--mono); font-size:8.5px;
+  letter-spacing:.04em; color:var(--muted); background:var(--panel); border:var(--hair);
+  padding:2px 6px; border-radius:5px;
+}
+.card .body{padding:14px 14px 15px; display:flex; flex-direction:column; flex:1; gap:2px}
+.card h3{font-size:14.5px; font-weight:550; line-height:1.28; letter-spacing:-.018em}
+.card .sub{font-size:12px; color:var(--muted)}
+.card .desc{font-size:12.5px; color:var(--muted); line-height:1.55; margin-top:8px}
+.card .foot{margin-top:auto; padding-top:13px; display:flex; align-items:flex-end; justify-content:space-between; gap:8px}
+.card .price{font-family:var(--display); font-weight:600; font-size:18px; letter-spacing:-.035em; font-variant-numeric:tabular-nums}
+.card .price small{font-size:10.5px; color:var(--muted); font-weight:500; letter-spacing:0}
+.card .pack{font-family:var(--mono); font-size:9.5px; color:var(--faint); text-align:right; line-height:1.5}
+.tradebar{
+  display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:11px;
+  padding:8px 10px; border-radius:9px; font-size:11.5px; border:1px solid transparent;
+}
+.tradebar.open{background:var(--leaf-bg); border-color:var(--leaf-line); color:var(--leaf); font-weight:500}
+.tradebar.open .v{font-family:var(--display); font-weight:600; font-size:14.5px; letter-spacing:-.03em}
+.tradebar.shut{background:var(--panel-2); border-color:var(--line); color:var(--muted)}
+.tradebar.shut svg{opacity:.7}
+.card .add{margin-top:8px}
+.empty{grid-column:1/-1; text-align:center; padding:56px 20px; color:var(--muted); font-size:14px}
+.count{font-family:var(--mono); font-size:11px; color:var(--faint); margin-bottom:14px}
+
+/* ---------- trade ---------- */
+.trade-grid{display:grid; grid-template-columns:1fr 448px; gap:52px; align-items:start; margin-top:42px}
+.tiers{display:grid; gap:10px}
+.tier{
+  border:var(--hair); border-radius:var(--r); padding:16px 18px; background:var(--panel);
+  display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center;
+  transition:border-color .15s;
+}
+.tier:hover{border-color:var(--line-2)}
+.tier .bg{
+  width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+  background:var(--lemon-bg); border:1px solid var(--lemon-line); color:var(--lemon);
+  font-family:var(--display); font-weight:700; font-size:14px;
+}
+.tier b{display:block; font-size:14.5px; font-weight:550; letter-spacing:-.018em}
+.tier span{display:block; font-size:12.5px; color:var(--muted); margin-top:1px}
+.tier .off{text-align:right}
+.tier .off .p{font-family:var(--display); font-weight:600; font-size:21px; letter-spacing:-.04em; color:var(--fg)}
+.tier .off .c{font-family:var(--mono); font-size:8.5px; letter-spacing:.09em; color:var(--faint); text-transform:uppercase}
+.perks{list-style:none; padding:0; margin:22px 0 0; display:grid; gap:11px}
+.perks li{display:grid; grid-template-columns:16px 1fr; gap:10px; font-size:13.5px; color:var(--muted); line-height:1.55}
+.perks svg{color:var(--leaf); margin-top:3px}
+
+.panel{border:var(--hair); border-radius:var(--r-lg); background:var(--panel); box-shadow:var(--shadow); overflow:hidden}
+.panel-hd{padding:16px 20px; border-bottom:var(--hair); display:flex; align-items:center; gap:10px; background:var(--panel-2)}
+.panel-hd .t{font-size:13.5px; font-weight:550; letter-spacing:-.015em}
+.panel-hd .lock{margin-left:auto; display:flex; align-items:center; gap:5px; font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase}
+.panel-bd{padding:20px}
+.tabs{display:flex; gap:3px; padding:3px; background:var(--panel-2); border:var(--hair); border-radius:10px; margin-bottom:20px}
+.tabs button{flex:1; height:31px; border-radius:7px; font-size:13px; font-weight:500; color:var(--muted); transition:background .14s, color .14s}
+.tabs button[aria-selected="true"]{background:var(--panel); color:var(--fg); box-shadow:var(--shadow-sm)}
+.field{margin-bottom:13px}
+.field label{display:block; font-size:12px; font-weight:500; color:var(--fg-2); margin-bottom:6px}
+.field input, .field select{
+  width:100%; height:38px; padding:0 12px; border-radius:9px; background:var(--bg);
+  border:1px solid var(--line-2); color:var(--fg); font-size:14px; outline:none;
+  transition:border-color .14s, box-shadow .14s;
+}
+.field select{padding-right:8px}
+.field input:focus, .field select:focus{border-color:var(--lemon); box-shadow:0 0 0 3px color-mix(in srgb, var(--lemon) 18%, transparent)}
+.field input::placeholder{color:var(--faint)}
+.field .help{font-size:11.5px; color:var(--faint); margin-top:5px}
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:11px}
+.strength{display:flex; gap:3px; margin-top:6px}
+.strength i{flex:1; height:3px; border-radius:2px; background:var(--panel-3); transition:background .2s}
+.strength i.on1{background:#E0574B} .strength i.on2{background:#E0A03B} .strength i.on3{background:var(--leaf)}
+.hint{font-size:12px; color:var(--muted); margin-top:14px; line-height:1.6}
+.hint a, .hint button{color:var(--fg); text-decoration:underline; text-underline-offset:2px}
+.msg{padding:10px 12px; border-radius:9px; font-size:12.5px; margin-bottom:14px; line-height:1.55; border:1px solid}
+.msg.err{background:color-mix(in srgb,#E0574B 10%,transparent); border-color:color-mix(in srgb,#E0574B 30%,transparent); color:#D14A3E}
+:root[data-theme="dark"] .msg.err{color:#F5938A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .msg.err{color:#F5938A}}
+.msg.ok{background:var(--leaf-bg); border-color:var(--leaf-line); color:var(--leaf)}
+.msg.info{background:var(--lemon-bg); border-color:var(--lemon-line); color:var(--lemon)}
+
+.acct{display:flex; align-items:center; gap:12px; padding-bottom:16px; border-bottom:var(--hair); margin-bottom:16px}
+.avatar{
+  width:38px; height:38px; border-radius:11px; flex-shrink:0; display:grid; place-items:center;
+  background:var(--lemon-bg); border:1px solid var(--lemon-line); color:var(--lemon);
+  font-family:var(--display); font-weight:700; font-size:15px;
+}
+.acct .nm{font-size:14px; font-weight:550; letter-spacing:-.015em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.acct .mt{font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.pill{
+  display:inline-flex; align-items:center; gap:5px; height:22px; padding:0 9px; border-radius:100px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; border:1px solid;
+}
+.pill.pend{background:var(--lemon-bg); border-color:var(--lemon-line); color:var(--lemon)}
+.pill.ok{background:var(--leaf-bg); border-color:var(--leaf-line); color:var(--leaf)}
+.stats3{display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:16px}
+.s3{border:var(--hair); border-radius:10px; padding:11px 12px; background:var(--panel-2)}
+.s3 .v{font-family:var(--display); font-weight:600; font-size:18px; letter-spacing:-.035em; font-variant-numeric:tabular-nums}
+.s3 .l{font-family:var(--mono); font-size:8.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-top:2px}
+
+.lines{display:flex; flex-direction:column; gap:7px; max-height:250px; overflow-y:auto; margin-bottom:14px; padding-right:2px}
+.li{display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center; border:var(--hair); border-radius:10px; padding:8px 10px; background:var(--panel-2)}
+.li .n{font-size:12.5px; font-weight:450; line-height:1.3; min-width:0}
+.li .n span{display:block; font-family:var(--mono); font-size:9.5px; color:var(--muted); margin-top:2px}
+.qty{display:flex; align-items:center; gap:1px; background:var(--bg); border:var(--hair); border-radius:8px; padding:2px}
+.qty button{width:22px; height:22px; border-radius:6px; color:var(--muted); font-size:14px; line-height:1; display:grid; place-items:center}
+.qty button:hover{background:var(--panel-3); color:var(--fg)}
+.qty .q{min-width:22px; text-align:center; font-family:var(--mono); font-size:11.5px; font-weight:600}
+.li .amt{font-family:var(--display); font-weight:600; font-size:13px; font-variant-numeric:tabular-nums; min-width:58px; text-align:right; letter-spacing:-.02em}
+.totals{border-top:var(--hair); padding-top:13px; display:grid; gap:6px; margin-bottom:14px}
+.totals div{display:flex; justify-content:space-between; font-size:13px; color:var(--muted)}
+.totals .sv{color:var(--leaf)}
+.totals .gr{
+  color:var(--fg); font-family:var(--display); font-weight:600; font-size:18px; letter-spacing:-.035em;
+  padding-top:9px; border-top:1px dashed var(--line-2); font-variant-numeric:tabular-nums;
+}
+
+/* ---------- quality ---------- */
+.qgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:42px; border:var(--hair); border-radius:var(--r-lg); overflow:hidden}
+.q{padding:28px 26px; border-right:var(--hair); background:var(--panel)}
+.q:last-child{border-right:0}
+.q .n{font-family:var(--mono); font-size:10px; letter-spacing:.11em; color:var(--lemon); font-weight:600}
+.q h3{font-size:16px; margin-top:12px; font-weight:550}
+.q p{font-size:13.5px; color:var(--muted); margin-top:9px; line-height:1.65}
+
+/* ---------- contact ---------- */
+.cgrid{display:grid; grid-template-columns:1fr 420px; gap:52px; align-items:start}
+.clist{border-top:var(--hair)}
+.crow{display:grid; grid-template-columns:32px 1fr auto; gap:13px; padding:15px 0; border-bottom:var(--hair); align-items:center}
+.crow .ic{width:32px; height:32px; border-radius:9px; border:var(--hair); background:var(--panel-2); display:grid; place-items:center; color:var(--muted)}
+.crow .l{font-family:var(--mono); font-size:9px; letter-spacing:.11em; text-transform:uppercase; color:var(--faint)}
+.crow .v{font-size:14px; font-weight:450; margin-top:2px}
+a.crow:hover .v{color:var(--lemon)}
+a.crow:hover .ic{color:var(--lemon); border-color:var(--lemon-line)}
+.ctas{display:flex; gap:10px; margin-top:26px; flex-wrap:wrap}
+
+/* ---------- footer ---------- */
+footer.site{padding-block:44px 28px; background:var(--bg-sub)}
+.fgrid{display:grid; grid-template-columns:1.7fr 1fr 1fr 1fr; gap:34px; padding-bottom:30px; border-bottom:var(--hair)}
+.fgrid h4{font-family:var(--mono); font-size:9.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--faint); margin:0 0 13px}
+.fgrid ul{list-style:none; padding:0; margin:0; display:grid; gap:9px}
+.fgrid li a{font-size:13.5px; color:var(--muted); transition:color .14s}
+.fgrid li a:hover{color:var(--fg)}
+.fbrand p{font-size:13px; color:var(--muted); margin-top:13px; max-width:40ch; line-height:1.65}
+.fbot{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:20px; font-size:12px; color:var(--faint)}
+
+.wafab{
+  position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom,0px)); z-index:90;
+  width:48px; height:48px; border-radius:50%; background:#22A94E; color:#fff;
+  display:grid; place-items:center; box-shadow:0 6px 20px -4px rgba(34,169,78,.5);
+  transition:transform .16s;
+}
+.wafab:hover{transform:scale(1.07)}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:1080px){
+  .hero-in{grid-template-columns:1fr 380px; gap:40px}
+  .trade-grid{grid-template-columns:1fr 400px; gap:36px}
+  .cgrid{grid-template-columns:1fr 380px; gap:36px}
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:900px){
+  nav.main{display:none}
+  #nav-toggle{display:grid}
+  .hero-in{grid-template-columns:1fr; gap:44px}
+  .hero-stage{max-width:400px; width:100%}
+  .flag-grid, .trade-grid, .cgrid{grid-template-columns:1fr; gap:38px}
+  .creds-in{grid-template-columns:1fr 1fr}
+  .cred{padding:22px 22px 22px 0; border-bottom:var(--hair)}
+  .cred:nth-child(2n){border-right:0; padding-right:0}
+  .cred:nth-child(2n+1){padding-left:0}
+  .cred:nth-last-child(-n+2){border-bottom:0}
+  .qgrid{grid-template-columns:1fr}
+  .q{border-right:0; border-bottom:var(--hair)}
+  .q:last-child{border-bottom:0}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fbrand{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .wrap{padding-inline:18px}
+  .sec{padding-block:56px}
+  .hero-in{padding-block:52px 56px}
+  .grid{grid-template-columns:1fr 1fr; gap:11px}
+  .card .art{min-height:134px; padding:14px 10px 8px}
+  .card .art svg{height:118px}
+  .card .art img{height:118px !important}
+  .card .body{padding:12px}
+  .card h3{font-size:13.5px}
+  .card .desc{display:none}
+  .creds-in{grid-template-columns:1fr}
+  .cred{padding:18px 0 !important; border-right:0}
+  .row2{grid-template-columns:1fr}
+  .stats3{grid-template-columns:1fr 1fr}
+  .swatches{grid-template-columns:1fr 1fr 1fr; gap:8px}
+  .swatch .art svg{height:96px}
+  .stage-card svg.product{height:296px; margin:18px auto 14px}
+  .stage-card img.product{height:296px; margin:18px auto 14px}
+  .search{min-width:0; width:100%}
+  .chips{overflow-x:auto; flex-wrap:nowrap; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex-shrink:0}
+  .toolbar{gap:8px}
+  .hstat{padding-right:20px; margin-right:20px}
+  .fgrid{grid-template-columns:1fr; gap:26px}
+  .panel-bd{padding:16px}
+  .brand .wm{font-size:15px}
+  .hbar{height:54px; gap:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- Sofex logo mark: a lemon-drop with a leaf and an S-channel -->
+  <symbol id="sofex-logo" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="lgA" x1=".1" y1="0" x2=".9" y2="1">
+        <stop offset="0%" stop-color="#FFDE6B"/><stop offset="52%" stop-color="#F7BE1E"/><stop offset="100%" stop-color="#E09000"/>
+      </linearGradient>
+      <linearGradient id="lgB" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#3E9B4F"/><stop offset="100%" stop-color="#7FDA83"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="32" height="32" rx="9" fill="url(#lgA)"/>
+    <path d="M16.2 9.2c0 0 6.1 6.6 6.1 10.4a6.1 6.1 0 0 1-12.2 0c0-3.8 6.1-10.4 6.1-10.4Z" fill="#141C3A"/>
+    <path d="M14 18.9a2.9 2.9 0 0 0 2.6 3.4" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M18.6 9.4c2.1-2.3 5.1-2.9 6-2.2.9.7.4 3.7-1.8 5.8-1.1 1.1-2.4 1.7-3.4 1.7-.5-1.3-1.2-2.6-1.9-3.8.3-.5.7-1 1.1-1.5Z" fill="url(#lgB)"/>
+  </symbol>
+</defs></svg>
+
+<header class="site">
+  <div class="wrap hbar">
+    <a class="brand" href="#top" aria-label="Sofex home">
+      <svg class="logo" aria-hidden="true"><use href="#sofex-logo"/></svg>
+      <span class="txt">
+        <span class="wm">Sofex</span>
+        <span class="sub">Soap &amp; Chemical</span>
+      </span>
+    </a>
+    <nav class="main">
+      <a href="#flagship">Flagship</a>
+      <a href="#products">Products</a>
+      <a href="#trade">Distributors</a>
+      <a href="#quality">Quality</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hactions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Switch between light and dark">
+        <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.1M12 19.1v2.1M2.8 12h2.1M19.1 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M18.5 5.5 17 7M7 17l-1.5 1.5"/></svg>
+        <svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+      </button>
+      <button class="icon-btn" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#trade">Distributor login</a>
+    </div>
+  </div>
+  <div class="mobnav" id="mobnav" data-open="false">
+    <a href="#flagship">Flagship</a>
+    <a href="#products">Products</a>
+    <a href="#trade">Distributors</a>
+    <a href="#quality">Quality</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="badge-row">
+        <span class="tag"><span class="dot"></span>SECP registered manufacturer</span>
+        <span class="tag">Made in Pakistan</span>
+      </div>
+      <h1>Cleaning products built for Pakistani kitchens, <span class="hl">priced for Pakistani shelves.</span></h1>
+      <p class="lede">Sofex Soap &amp; Chemical Industries manufactures dishwashing liquid, detergents, soaps, shampoos and surface cleaners in our own plant — batch-tested, honestly filled, and supplied direct to retailers and distributors nationwide.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="#products">
+          Browse the price list
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-line btn-lg" href="#trade">Become a distributor</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="v tnum">36</div><div class="l">SKUs in production</div></div>
+        <div class="hstat"><div class="v tnum">7</div><div class="l">Product lines</div></div>
+        <div class="hstat"><div class="v tnum">34%</div><div class="l">Max trade discount</div></div>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="stage-card">
+        <div id="hero-art"></div>
+        <div class="stage-meta">
+          <div class="nm">Lemon Fresh Dishwashing Liquid<span>SFX-DW450 · 450ML · CTN OF 12</span></div>
+          <div class="pr"><small>Rs.</small> 260</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CREDENTIALS ===================== -->
+<div class="creds">
+  <div class="wrap creds-in">
+    <div class="cred">
+      <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7.5-4 7.5-10V5.4L12 2.5 4.5 5.4V12c0 6 7.5 10 7.5 10Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg></div>
+      <div class="k">SECP registered</div>
+      <div class="t">A documented company, not an unregistered backyard filler.</div>
+    </div>
+    <div class="cred">
+      <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4.5l4.2 8.9A3 3 0 0 1 16.5 21h-9a3 3 0 0 1-2.7-4.6L9 7.5Z"/><path d="M7.2 15.5h9.6"/></svg></div>
+      <div class="k">Batch tested</div>
+      <div class="t">pH, active matter and viscosity checked before a bottle is filled.</div>
+    </div>
+    <div class="cred">
+      <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5 12 4l8.5 4.5v7L12 20l-8.5-4.5Z"/><path d="M12 12 3.5 8.5M12 12l8.5-3.5M12 12v8"/></svg></div>
+      <div class="k">Honest fill</div>
+      <div class="t">450ml means 450ml — fill heads calibrated every shift.</div>
+    </div>
+    <div class="cred">
+      <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="13" height="10" rx="2"/><path d="M15.5 10h3.2l2.8 3v4h-6z"/><circle cx="6.5" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></div>
+      <div class="k">48-hour dispatch</div>
+      <div class="t">Confirmed trade orders leave the plant inside two working days.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FLAGSHIP ===================== -->
+<section class="sec" id="flagship">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Flagship line</span>
+      <h2>Sofex Lemon Fresh Dishwashing Liquid</h2>
+      <p>The product that built the brand. A high-active, lemon-scented dishwash that cuts <i>desi</i> cooking grease — karahi oil, ghee, biryani masala — without stripping your hands. Three fragrances, four pack sizes, one refill can.</p>
+    </div>
+    <div class="flag-grid">
+      <div>
+        <div class="swatches" id="flag-swatches"></div>
+        <dl class="specs">
+          <div><dt>Pack sizes</dt><dd>250ml · 450ml · 900ml · 5L</dd></div>
+          <div><dt>Carton packing</dt><dd>450ml × 12 bottles</dd></div>
+          <div><dt>Active matter</dt><dd>15% min.</dd></div>
+          <div><dt>Shelf life</dt><dd>24 months from batch date</dd></div>
+          <div><dt>Printed MRP (450ml)</dt><dd>Rs. 260</dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="feats">
+          <div class="feat">
+            <span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7c3.4 4 5.6 6.8 5.6 9.6A5.6 5.6 0 0 1 6.4 12.3c0-2.8 2.2-5.6 5.6-9.6Z"/></svg></span>
+            <span><b>High active content</b><span>One 5ml squeeze handles a full sink load, so a 450ml bottle lasts a family about four weeks.</span></span>
+          </div>
+          <div class="feat">
+            <span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7.5-4 7.5-10V5.4L12 2.5 4.5 5.4V12c0 6 7.5 10 7.5 10Z"/><path d="m9.2 12.2 2 2 3.6-3.8"/></svg></span>
+            <span><b>Antibacterial formula</b><span>Removes bacteria carried on raw meat and vegetable residue from plates, boards and utensils.</span></span>
+          </div>
+          <div class="feat">
+            <span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a2 2 0 0 1 4 0V12m0-1.5a2 2 0 0 1 4 0V12m0-1a2 2 0 0 1 4 0v4.5a6 6 0 0 1-6 6h-1.6a6 6 0 0 1-4.6-2.2L4 15.4a2 2 0 0 1 3-2.6l1 1"/></svg></span>
+            <span><b>Mild on hands</b><span>pH-balanced with added glycerine, so daily washing does not leave skin dry or cracked.</span></span>
+          </div>
+          <div class="feat">
+            <span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 8-8M20 12a8 8 0 0 1-8 8"/><path d="M12 4 9.5 6.5M12 20l2.5-2.5"/></svg></span>
+            <span><b>Rinses clean</b><span>Low-residue formulation — no soapy film on steel, glass or melamine, which is what customers notice first.</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flag-lifestyle">
+      <img src="img/lemon-fresh-kitchen.jpg" alt="Sofex Lemon Fresh Dishwashing Liquid on a kitchen counter, next to a sponge and fresh lemons" loading="lazy">
+      <span class="cap">Cuts through grease on real Pakistani kitchen counters — not just in the lab.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Complete catalogue</span>
+      <h2>Every Sofex product, with its shelf price</h2>
+      <p>Printed MRP in Pakistani Rupees, inclusive of tax. Signed-in distributors see their own trade rate on every card and can build an order from here. Prices last revised September&nbsp;2026.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="chips" id="chips">
+        <button class="chip" data-cat="all" aria-pressed="true">All</button>
+        <button class="chip" data-cat="Dishwashing" aria-pressed="false">Dishwashing</button>
+        <button class="chip" data-cat="Laundry" aria-pressed="false">Laundry</button>
+        <button class="chip" data-cat="Soaps" aria-pressed="false">Soaps &amp; Handwash</button>
+        <button class="chip" data-cat="Hair &amp; Body" aria-pressed="false">Hair &amp; Body</button>
+        <button class="chip" data-cat="Surface Care" aria-pressed="false">Surface Care</button>
+        <button class="chip" data-cat="Bathroom" aria-pressed="false">Bathroom</button>
+        <button class="chip" data-cat="Auto &amp; Industrial" aria-pressed="false">Auto &amp; Industrial</button>
+      </div>
+      <label class="search">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        <input type="search" id="search" placeholder="Search product or SKU" aria-label="Search products">
+      </label>
+    </div>
+
+    <p class="count" id="count"></p>
+    <div class="grid" id="catalog"></div>
+  </div>
+</section>
+
+<!-- ===================== TRADE ===================== -->
+<section class="sec" id="trade">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Distributor portal</span>
+      <h2>Buy at trade rate. Sell at MRP. Keep the margin.</h2>
+      <p>Register your shop or distribution firm, get verified by our sales desk, and unlock wholesale pricing across the entire range — then build your order here and send it straight to the order desk on WhatsApp.</p>
+    </div>
+    <div class="trade-grid">
+      <div>
+        <div class="tiers">
+          <div class="tier">
+            <span class="bg">R</span>
+            <span><b>Retailer</b><span>General store, kiryana, pharmacy · min. order Rs. 15,000</span></span>
+            <span class="off"><span class="p">18%</span><span class="c">off MRP</span></span>
+          </div>
+          <div class="tier">
+            <span class="bg">S</span>
+            <span><b>Sub-Distributor</b><span>Town or union-council territory · min. order Rs. 50,000</span></span>
+            <span class="off"><span class="p">26%</span><span class="c">off MRP</span></span>
+          </div>
+          <div class="tier">
+            <span class="bg">D</span>
+            <span><b>District Distributor</b><span>Exclusive district rights · min. order Rs. 150,000</span></span>
+            <span class="off"><span class="p">34%</span><span class="c">off MRP</span></span>
+          </div>
+        </div>
+        <ul class="perks">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.5 17 4 11.5"/></svg><span>Credit terms of 15–30 days once three orders are settled on time.</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.5 17 4 11.5"/></svg><span>Free shelf strips, danglers and a display rack on your first full-range order.</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.5 17 4 11.5"/></svg><span>Damaged or leaked stock replaced free when reported within 7 days of delivery.</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.5 17 4 11.5"/></svg><span>District distributors get territory protection — no second firm in your area.</span></li>
+        </ul>
+      </div>
+
+      <div class="panel" id="portal">
+        <div class="panel-hd">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="color:var(--lemon)"><rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/><path d="M8 10.5V7.2a4 4 0 0 1 8 0v3.3"/></svg>
+          <span class="t">Trade account</span>
+          <span class="lock" id="portal-state">Signed out</span>
+        </div>
+        <div class="panel-bd">
+          <div id="portal-auth">
+            <div class="tabs" role="tablist">
+              <button id="tab-login" role="tab" aria-selected="true" aria-controls="pane-login">Sign in</button>
+              <button id="tab-signup" role="tab" aria-selected="false" aria-controls="pane-signup">Register</button>
+            </div>
+            <div id="portal-msg"></div>
+
+            <form id="pane-login" role="tabpanel" aria-labelledby="tab-login">
+              <div class="field">
+                <label for="li-phone">Mobile number</label>
+                <input id="li-phone" name="phone" type="tel" inputmode="numeric" placeholder="03xx-xxxxxxx" autocomplete="username" maxlength="20" required>
+              </div>
+              <div class="field">
+                <label for="li-pass">Password</label>
+                <input id="li-pass" name="password" type="password" placeholder="Your password" autocomplete="current-password" maxlength="128" required>
+              </div>
+              <button class="btn btn-accent btn-block btn-lg" type="submit" id="li-go">Sign in</button>
+              <p class="hint">New to Sofex? Open the <b>Register</b> tab — the sales desk verifies most applications the same working day.</p>
+            </form>
+
+            <form id="pane-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+              <div class="row2">
+                <div class="field">
+                  <label for="su-name">Your name</label>
+                  <input id="su-name" name="name" type="text" placeholder="Full name" autocomplete="name" maxlength="60" required>
+                </div>
+                <div class="field">
+                  <label for="su-phone">Mobile / WhatsApp</label>
+                  <input id="su-phone" name="phone" type="tel" inputmode="numeric" placeholder="03xx-xxxxxxx" autocomplete="tel" maxlength="20" required>
+                </div>
+              </div>
+              <div class="field">
+                <label for="su-biz">Business name</label>
+                <input id="su-biz" name="business" type="text" placeholder="e.g. Al-Madina Traders" autocomplete="organization" maxlength="80" required>
+              </div>
+              <div class="row2">
+                <div class="field">
+                  <label for="su-city">City / district</label>
+                  <input id="su-city" name="city" type="text" placeholder="e.g. Faisalabad" autocomplete="address-level2" maxlength="50" required>
+                </div>
+                <div class="field">
+                  <label for="su-tier">Applying as</label>
+                  <select id="su-tier" name="tier" required>
+                    <option value="retailer">Retailer</option>
+                    <option value="sub">Sub-Distributor</option>
+                    <option value="district">District Distributor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="su-pass">Create a password</label>
+                <input id="su-pass" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" maxlength="128" required>
+                <div class="strength" aria-hidden="true"><i id="sb1"></i><i id="sb2"></i><i id="sb3"></i></div>
+                <p class="help" id="su-help">Use 8+ characters. Never reuse your bank or email password here.</p>
+              </div>
+              <button class="btn btn-accent btn-block btn-lg" type="submit" id="su-go">Submit application</button>
+              <p class="hint">Submitting opens WhatsApp with your details so the sales desk can verify you and issue an activation code.</p>
+            </form>
+          </div>
+          <div id="portal-account" hidden></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== QUALITY ===================== -->
+<section class="sec" id="quality">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How we make it</span>
+      <h2>Three things we refuse to cut corners on</h2>
+    </div>
+    <div class="qgrid">
+      <div class="q">
+        <div class="n">01 — RAW MATERIAL</div>
+        <h3>Fresh surfactant, not recovered stock</h3>
+        <p>Sulphonic acid, SLES and thickener come from documented suppliers against batch certificates. We do not buy reclaimed or blended-down chemical — the single biggest reason cheap local dishwash goes cloudy and loses foam on the shelf.</p>
+      </div>
+      <div class="q">
+        <div class="n">02 — BATCH CONTROL</div>
+        <h3>Every batch tested before filling</h3>
+        <p>Each mix is checked for pH, active matter, viscosity and clarity before a single bottle is filled, and the batch number is printed on the pack. A failed batch is reworked — it does not quietly go out at a discount.</p>
+      </div>
+      <div class="q">
+        <div class="n">03 — HONEST FILL</div>
+        <h3>450ml means 450ml</h3>
+        <p>Volumetric fill heads are calibrated at the start of every shift and audited mid-run. Short-filling is common in this category and it is the fastest way to lose a retailer's trust, so we measure it and keep the records.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="sec" id="contact">
+  <div class="wrap cgrid">
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h2 style="font-size:clamp(1.55rem,3vw,2.1rem); margin-top:14px; font-weight:600">Talk to the Sofex sales desk</h2>
+      <p style="color:var(--muted); margin-top:14px; font-size:15.5px; line-height:1.68">Orders, trade rates, territory enquiries and stock complaints all reach the same number. We answer on WhatsApp during business hours, Monday to Saturday, 9am to 7pm.</p>
+      <div class="ctas">
+        <a class="btn btn-wa btn-lg" id="wa-general" href="https://wa.me/923489057646" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+          WhatsApp the sales desk
+        </a>
+        <a class="btn btn-line btn-lg" href="tel:+923489057646">+92 348 9057646</a>
+      </div>
+    </div>
+    <div>
+      <div class="clist">
+        <a class="crow" href="https://wa.me/923489057646" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 2H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7A2 2 0 0 1 21 16.9Z"/></svg></span>
+          <span><span class="l">Phone &amp; WhatsApp</span><span class="v">+92 348 9057646</span></span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--faint)"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <div class="crow">
+          <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10.3" r="2.8"/></svg></span>
+          <span><span class="l">Factory &amp; sales office</span><span class="v">Punjab, Pakistan</span></span>
+        </div>
+        <div class="crow">
+          <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3.5 8.5 12 13l8.5-4.5"/></svg></span>
+          <span><span class="l">Registration</span><span class="v">Registered with SECP, Government of Pakistan</span></span>
+        </div>
+        <div class="crow">
+          <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg></span>
+          <span><span class="l">Business hours</span><span class="v">Mon–Sat · 9:00am – 7:00pm PKT</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="brand">
+          <svg class="logo" aria-hidden="true"><use href="#sofex-logo"/></svg>
+          <span class="txt"><span class="wm">Sofex</span><span class="sub">Soap &amp; Chemical</span></span>
+        </div>
+        <p>Sofex Soap &amp; Chemical Industries manufactures cleaning and personal-care products in Pakistan and supplies them direct to retailers, sub-distributors and district distributors nationwide.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#flagship">Lemon Fresh Dishwash</a></li>
+          <li><a href="#products">Laundry &amp; detergents</a></li>
+          <li><a href="#products">Soaps &amp; handwash</a></li>
+          <li><a href="#products">Surface &amp; bathroom care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Trade</h4>
+        <ul>
+          <li><a href="#trade">Distributor login</a></li>
+          <li><a href="#trade">Become a distributor</a></li>
+          <li><a href="#trade">Trade rates &amp; tiers</a></li>
+          <li><a href="#quality">Quality &amp; batch control</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#quality">How we make it</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://wa.me/923489057646" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="tel:+923489057646">+92 348 9057646</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Sofex Soap &amp; Chemical Industries</span>
+      <span>Registered with SECP, Pakistan · Prices in PKR, inclusive of tax</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wafab" href="https://wa.me/923489057646" target="_blank" rel="noopener noreferrer" aria-label="Chat with Sofex on WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+</a>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   SOFEX — configuration
+   ------------------------------------------------------------
+   WA_NUMBER        sales-desk WhatsApp, digits only
+   ACTIVATION_HASH  PBKDF2-SHA256 digest of the activation code.
+                    The plain code is NEVER stored in this file.
+                    To change it, hash the new code with the same
+                    salt and round count, then paste the digest.
+   ============================================================ */
+var WA_NUMBER       = "923489057646";
+var ACTIVATION_SALT = "sofex-activation-v1";
+var ACTIVATION_HASH = "9fcef79642df1e63acc68bca297b08a3f984e5d420a2223a887fd25e5677de13";
+var KDF_ROUNDS      = 100000;
+
+var MAX_TRIES   = 5;
+var LOCK_MS     = 15 * 60 * 1000;
+var SESSION_MS  = 12 * 60 * 60 * 1000;
+
+var TIERS = {
+  retailer: { name:"Retailer",             off:0.18, min:15000  },
+  sub:      { name:"Sub-Distributor",      off:0.26, min:50000  },
+  district: { name:"District Distributor", off:0.34, min:150000 }
+};
+
+/* ============================================================
+   Catalogue - sku, name, variant, category, size, mrp, carton,
+               shape, colourway, description
+   ============================================================ */
+var P = [
+ ["SFX-DW250","Lemon Fresh Dishwashing Liquid","Classic Lemon","Dishwashing","250ml",150,24,"dish","lemon","Trial size &mdash; the fastest mover at kiryana counters."],
+ ["SFX-DW450","Lemon Fresh Dishwashing Liquid","Classic Lemon","Dishwashing","450ml",260,12,"dish","lemon","Our best seller. Antibacterial, mild on hands, cuts cooking grease."],
+ ["SFX-DW900","Lemon Fresh Dishwashing Liquid","Classic Lemon","Dishwashing","900ml",480,12,"dish","lemon","Family pack &mdash; the best rupee-per-ml on the shelf."],
+ ["SFX-DW5L","Lemon Fresh Dishwash Refill","Bulk Jerry Can","Dishwashing","5 Litre",2150,4,"jug","lemon","Refill can for restaurants, canteens and marriage halls."],
+ ["SFX-DO450","Orange Zest Dishwashing Liquid","Orange Zest","Dishwashing","450ml",260,12,"dish","orange","Same formula, sharper citrus lift for fish and meat odour."],
+ ["SFX-DA450","Green Apple Dishwashing Liquid","Green Apple","Dishwashing","450ml",260,12,"dish","apple","A softer fragrance for customers who find lemon too strong."],
+ ["SFX-DWP300","Dishwash Paste Tub","Lemon","Dishwashing","300g",185,24,"tub","lemon","Traditional paste for scrubbing degh, karahi and burnt steel."],
+
+ ["SFX-WP500","Sofex Washing Powder","High Foam","Laundry","500g",240,20,"pouch","blue","Hand-wash grade powder with brightener and enzyme blend."],
+ ["SFX-WP1K","Sofex Washing Powder","High Foam","Laundry","1 kg",450,12,"pouch","blue","The standard household pack, twelve to a carton."],
+ ["SFX-WP3K","Sofex Washing Powder","High Foam","Laundry","3 kg",1280,6,"pouch","blue","Value pack for large families and laundry services."],
+ ["SFX-LD1L","Liquid Detergent","Automatic Machine","Laundry","1 Litre",520,12,"jug","blue","Low-foam liquid, safe for front-load and top-load machines."],
+ ["SFX-LB250","Laundry Bar Soap","Blue Bar","Laundry","250g",110,48,"carton","blue","Hard bar for collar, cuff and heavy stain work."],
+ ["SFX-FS1L","Fabric Softener","Rose Musk","Laundry","1 Litre",520,12,"jug","rose","Leaves cotton soft with a fragrance that lasts through drying."],
+ ["SFX-BL1L","Sofex Bleach","Sodium Hypochlorite","Laundry","1 Litre",230,12,"jug","plain","Whitening and disinfecting bleach for whites and floors."],
+
+ ["SFX-BS100R","Sofex Beauty Soap","Rose &amp; Glycerine","Soaps","100g",130,72,"carton","rose","Glycerine-rich toilet soap with a classic rose fragrance."],
+ ["SFX-BS100L","Sofex Beauty Soap","Lemon &amp; Honey","Soaps","100g",130,72,"carton","lemon","Fresh citrus bar for oily skin and summer months."],
+ ["SFX-AB100","Antibacterial Soap","Germ Protection","Soaps","100g",145,72,"carton","green","Everyday protection bar for kitchens, clinics and schools."],
+ ["SFX-HW500","Sofex Handwash","Pump Bottle","Soaps","500ml",310,12,"spray","green","Pump bottle with moisturiser &mdash; the one guests see."],
+ ["SFX-HW1L","Handwash Refill Pouch","Economy Refill","Soaps","1 Litre",480,12,"pouch","green","Refills two pump bottles at well under half the price."],
+ ["SFX-HS250","Hand Sanitizer Gel","70% Alcohol","Soaps","250ml",280,24,"tube","teal","Quick-dry gel that meets the 70% alcohol benchmark."],
+
+ ["SFX-SH200","Sofex Shampoo","Anti-Dandruff","Hair &amp; Body","200ml",340,24,"tube","teal","Zinc-based anti-dandruff shampoo for weekly use."],
+ ["SFX-SH400","Sofex Shampoo","Silky Smooth","Hair &amp; Body","400ml",620,12,"tube","amber","Everyday shampoo with conditioning agents for long hair."],
+ ["SFX-CN200","Sofex Hair Conditioner","Almond &amp; Argan","Hair &amp; Body","200ml",380,24,"tube","cream","Post-wash conditioner that cuts frizz and tangling."],
+ ["SFX-BW400","Sofex Body Wash","Aloe Vera","Hair &amp; Body","400ml",560,12,"tube","green","Gentle, sulphate-light body wash with aloe extract."],
+
+ ["SFX-GC500","Glass &amp; Window Cleaner","Trigger Spray","Surface Care","500ml",280,12,"spray","sky","Streak-free on glass, mirrors, screens and steel."],
+ ["SFX-AP1L","All-Purpose Surface Cleaner","Multi-Surface","Surface Care","1 Litre",420,12,"jug","teal","One bottle for counters, tables, doors and switchboards."],
+ ["SFX-FC1L","Sofex Floor Cleaner","Pine Fresh","Surface Care","1 Litre",390,12,"jug","pine","Disinfectant floor cleaner with a long pine trail."],
+ ["SFX-FC5L","Sofex Floor Cleaner","Pine Fresh &middot; Bulk","Surface Care","5 Litre",1650,4,"jug","pine","Bulk can for schools, hospitals, mosques and offices."],
+ ["SFX-PH1L","White Phenyl","Disinfectant","Surface Care","1 Litre",260,12,"jug","plain","The traditional white phenyl, at an honest dilution."],
+ ["SFX-AF300","Air Freshener Spray","Jasmine","Surface Care","300ml",350,24,"tube","violet","Room spray with a jasmine note that does not turn sour."],
+
+ ["SFX-TC500","Sofex Toilet Cleaner","Thick Formula","Bathroom","500ml",290,12,"toilet","violet","Clings to the bowl to lift hard-water stain and lime."],
+ ["SFX-TB500","Bathroom &amp; Tile Cleaner","Trigger Spray","Bathroom","500ml",310,12,"spray","sky","Removes soap scum and water marks from tile and fittings."],
+ ["SFX-DS500","Drain &amp; Sink Degreaser","Heavy Duty","Bathroom","500ml",330,12,"toilet","orange","Clears kitchen-sink grease blockage without hot water."],
+
+ ["SFX-CS500","Car Shampoo &amp; Wax","Gloss Finish","Auto &amp; Industrial","500ml",450,12,"tube","blue","Wash-and-wax concentrate for service stations and home use."],
+ ["SFX-DG1L","Multi-Purpose Degreaser","Workshop Grade","Auto &amp; Industrial","1 Litre",560,12,"jug","orange","Strips engine oil and machine grease from metal and concrete."],
+ ["SFX-IC5L","Industrial Cleaner Concentrate","Dilute 1:20","Auto &amp; Industrial","5 Litre",1980,4,"jug","steel","Concentrate for factories, kitchens and commercial laundries."]
+];
+
+/* ============================================================
+   Product artwork - everything is drawn, nothing photographed
+   ============================================================ */
+var LIQ = {
+  lemon :["#FFF0A8","#FFD745","#EFA400"],
+  orange:["#FFE0B8","#FFB25E","#E86F12"],
+  apple :["#E8F8C4","#B6E176","#5CAE2C"],
+  blue  :["#D6EEFF","#7DC2F5","#1665C8"],
+  green :["#D8F5E2","#8ADCA8","#2A9455"],
+  teal  :["#D2F4F0","#84DCD3","#0C9187"],
+  sky   :["#DFF3FF","#9BD7F7","#2F97DC"],
+  pine  :["#DDF0CE","#9CCE84","#3B8232"],
+  rose  :["#FFE0EB","#FFA6C4","#CE3E76"],
+  violet:["#EDE3FF","#BFA3F0","#6A41BE"],
+  amber :["#FFEFD4","#FFCE8A","#C87F1C"],
+  cream :["#FCF7EC","#EADCC0","#C6AC77"],
+  steel :["#EDF2F8","#BCC8D6","#6C7F96"],
+  plain :["#FBFCFE","#E2E9F2","#BCC6D3"]
+};
+var LABEL_A="#FFE98F", LABEL_B="#F6C22B", LABEL_EDGE="#4E8C2B", INK="#141C3A", RED="#C0341F";
+
+var uid=0;
+function gid(){ return "s"+(++uid); }
+
+function defsFor(id, key){
+  var c = LIQ[key] || LIQ.plain;
+  return '<defs>'+
+    '<linearGradient id="'+id+'l" x1="0" y1="0" x2="1" y2="1">'+
+      '<stop offset="0%" stop-color="'+c[0]+'"/><stop offset="48%" stop-color="'+c[1]+'"/><stop offset="100%" stop-color="'+c[2]+'"/>'+
+    '</linearGradient>'+
+    '<linearGradient id="'+id+'c" x1="0" y1="0" x2="1" y2="0">'+
+      '<stop offset="0%" stop-color="'+c[1]+'"/><stop offset="42%" stop-color="'+c[0]+'"/><stop offset="100%" stop-color="'+c[2]+'"/>'+
+    '</linearGradient>'+
+    '<linearGradient id="'+id+'h" x1="0" y1="0" x2="1" y2="0">'+
+      '<stop offset="0%" stop-color="#fff" stop-opacity=".8"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/>'+
+    '</linearGradient>'+
+    '<linearGradient id="'+id+'g" x1="0" y1="0" x2="0" y2="1">'+
+      '<stop offset="0%" stop-color="'+LABEL_A+'"/><stop offset="100%" stop-color="'+LABEL_B+'"/>'+
+    '</linearGradient>'+
+    '<radialGradient id="'+id+'s" cx=".5" cy=".5" r=".5">'+
+      '<stop offset="0%" stop-color="'+INK+'" stop-opacity=".2"/><stop offset="100%" stop-color="'+INK+'" stop-opacity="0"/>'+
+    '</radialGradient>'+
+  '</defs>';
+}
+
+function labelArt(id, x, y, w, h, size, variant, full){
+  var cx = x + w/2, s = "";
+  s += '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(w*0.12).toFixed(1)+'" fill="url(#'+id+'g)" stroke="'+LABEL_EDGE+'" stroke-width="'+(w*0.042).toFixed(2)+'"/>';
+  s += '<text x="'+cx+'" y="'+(y+h*0.275).toFixed(1)+'" text-anchor="middle" font-family="Inter Tight, Inter, sans-serif" font-weight="700" font-size="'+(w*0.225).toFixed(1)+'" fill="'+INK+'" letter-spacing="-0.5">Sofex</text>';
+  if(full){
+    s += '<text x="'+cx+'" y="'+(y+h*0.395).toFixed(1)+'" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="'+(w*0.098).toFixed(1)+'" fill="'+INK+'">'+deEnt(variant)+'</text>';
+    s += '<text x="'+cx+'" y="'+(y+h*0.49).toFixed(1)+'" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="'+(w*0.058).toFixed(1)+'" fill="'+RED+'" letter-spacing="0.25">DISHWASHING LIQUID</text>';
+  } else {
+    s += '<rect x="'+(x+w*0.24).toFixed(1)+'" y="'+(y+h*0.365).toFixed(1)+'" width="'+(w*0.52).toFixed(1)+'" height="'+(h*0.03).toFixed(1)+'" rx="'+(h*0.015).toFixed(2)+'" fill="'+RED+'" opacity=".8"/>';
+  }
+  var lr = w*0.125, lx = x + w*0.735, ly = y + h*0.665;
+  s += '<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="'+lr.toFixed(1)+'" fill="#FFF8D6" stroke="'+LABEL_EDGE+'" stroke-width="'+(w*0.02).toFixed(2)+'"/>';
+  for(var i=0;i<6;i++){
+    var a=(i/6)*Math.PI*2+0.42;
+    s += '<path d="M'+lx.toFixed(2)+' '+ly.toFixed(2)+' L'+(lx+Math.cos(a)*lr*0.78).toFixed(2)+' '+(ly+Math.sin(a)*lr*0.78).toFixed(2)+'" stroke="#EE9F00" stroke-width="'+(w*0.018).toFixed(2)+'" stroke-linecap="round"/>';
+  }
+  s += '<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="'+(lr*0.19).toFixed(2)+'" fill="#EE9F00"/>';
+  s += '<text x="'+(x+w*0.29).toFixed(1)+'" y="'+(y+h*0.70).toFixed(1)+'" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="600" font-size="'+(w*0.125).toFixed(1)+'" fill="'+INK+'">'+deEnt(size)+'</text>';
+  if(full){
+    s += '<text x="'+cx+'" y="'+(y+h*0.88).toFixed(1)+'" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="'+(w*0.072).toFixed(1)+'" fill="'+INK+'" opacity=".62" letter-spacing="0.5">ANTIBACTERIAL</text>';
+  }
+  return '<g>'+s+'</g>';
+}
+
+function geometry(shape){
+  switch(shape){
+    case "dish": return {
+      cap:'<rect x="52" y="5" width="16" height="11" rx="4.5" fill="url(#IDc)"/>'+
+          '<rect x="45" y="14" width="30" height="16" rx="5.5" fill="url(#IDc)"/>'+
+          '<path d="M48 18h24M48 22h24M48 26h24" stroke="'+INK+'" stroke-opacity=".13" stroke-width="1.3"/>',
+      body:'M50 29 L50 41 C44 45 34 53 30 67 C27 79 31 91 35 101 C38 111 30 119 29 135 C28 152 28 168 30 178 C31 183 35 185 41 185 L79 185 C85 185 89 183 90 178 C92 168 92 152 91 135 C90 119 82 111 85 101 C89 91 93 79 90 67 C86 53 76 45 70 41 L70 29 Z',
+      fill:50, label:[34,116,52,50], shine:[36,66,5,104]
+    };
+    case "jug": return {
+      cap:'<rect x="34" y="7" width="26" height="13" rx="4" fill="url(#IDc)"/>'+
+          '<rect x="37" y="19" width="20" height="8" rx="2" fill="url(#IDc)" opacity=".85"/>',
+      body:'M24 42 a14 14 0 0 1 14 -14 h18 a14 14 0 0 1 14 14 v130 a12 12 0 0 1 -12 12 h-22 a12 12 0 0 1 -12 -12 Z',
+      extra:'<path d="M70 62 a20 20 0 0 1 0 44" fill="none" stroke="url(#IDc)" stroke-width="9" stroke-linecap="round"/>',
+      fill:50, label:[30,104,36,56], shine:[29,54,4,110]
+    };
+    case "pouch": return {
+      cap:'<path d="M16 26 q9 -8 18 0 q9 -8 18 0 q9 -8 18 0 q9 -8 18 0 v5 h-72 z" fill="url(#IDc)"/>'+
+          '<path d="M16 31 h72" stroke="'+INK+'" stroke-opacity=".12" stroke-width="1.3"/>',
+      body:'M18 30 h84 a6 6 0 0 1 6 6 v148 a6 6 0 0 1 -6 6 h-84 a6 6 0 0 1 -6 -6 v-148 a6 6 0 0 1 6 -6 Z',
+      fill:34, label:[26,84,68,66], shine:[20,44,6,130]
+    };
+    case "carton": return {
+      cap:'<path d="M14 56 l16 -14 h76 l-16 14 z" fill="url(#IDc)"/>'+
+          '<path d="M90 56 l16 -14 v104 l-16 14 z" fill="url(#IDl)" opacity=".6"/>',
+      body:'M14 56 h76 v104 h-76 z',
+      fill:56, label:[24,74,56,66], shine:[19,62,5,88]
+    };
+    case "tube": return {
+      cap:'<rect x="44" y="7" width="32" height="19" rx="7" fill="url(#IDc)"/>'+
+          '<rect x="47" y="24" width="26" height="6" rx="2" fill="url(#IDc)" opacity=".8"/>',
+      body:'M32 48 a20 20 0 0 1 20 -20 h16 a20 20 0 0 1 20 20 v120 a18 18 0 0 1 -18 18 h-20 a18 18 0 0 1 -18 -18 Z',
+      fill:52, label:[38,86,44,66], shine:[37,58,5,110]
+    };
+    case "tub": return {
+      cap:'<rect x="16" y="48" width="88" height="15" rx="6" fill="url(#IDc)"/>'+
+          '<ellipse cx="60" cy="48" rx="44" ry="10" fill="url(#IDc)"/>'+
+          '<ellipse cx="60" cy="47" rx="36" ry="7" fill="'+INK+'" opacity=".07"/>',
+      body:'M16 62 v98 a10 10 0 0 0 5 9 q39 12 78 0 a10 10 0 0 0 5 -9 v-98 z',
+      fill:62, label:[26,90,68,58], shine:[22,72,6,80]
+    };
+    case "spray": return {
+      cap:'<path d="M42 8 h26 a6 6 0 0 1 6 6 v14 h-32 a6 6 0 0 1 -6 -6 v-8 a6 6 0 0 1 6 -6 z" fill="url(#IDc)"/>'+
+          '<path d="M74 11 h20 a5 5 0 0 1 5 5 v4 a5 5 0 0 1 -5 5 h-20 z" fill="url(#IDc)"/>'+
+          '<path d="M44 28 h22 v8 a4 4 0 0 1 -4 4 h-14 a4 4 0 0 1 -4 -4 z" fill="url(#IDl)" opacity=".7"/>',
+      body:'M28 58 a16 16 0 0 1 16 -16 h22 a16 16 0 0 1 16 16 v112 a16 16 0 0 1 -16 16 h-22 a16 16 0 0 1 -16 -16 Z',
+      fill:62, label:[34,96,50,62], shine:[33,70,5,102]
+    };
+    default: return {
+      cap:'<path d="M58 8 h20 a5 5 0 0 1 5 5 v11 l-14 9 l-15 -7 z" fill="url(#IDc)"/>',
+      body:'M54 26 q-4 14 -15 23 q-13 11 -13 28 v87 a14 14 0 0 0 14 14 h36 a14 14 0 0 0 14 -14 v-87 q0 -17 -13 -28 q-11 -9 -15 -23 z',
+      fill:44, label:[30,100,56,58], shine:[32,64,5,100]
+    };
+  }
+}
+
+function art(shape, key, size, variant, full){
+  var id=gid(), G=geometry(shape), c=LIQ[key]||LIQ.plain, clip=id+"clip";
+  function sub(str){ return String(str||"").split("ID").join(id); }
+  return '<svg viewBox="0 0 120 200" role="img" aria-hidden="true">'+defsFor(id,key)+
+    '<clipPath id="'+clip+'"><path d="'+G.body+'"/></clipPath>'+
+    '<ellipse cx="60" cy="190" rx="40" ry="9" fill="url(#'+id+'s)"/>'+
+    sub(G.cap)+
+    '<path d="'+G.body+'" fill="#FFFFFF" opacity=".16"/>'+'<path d="'+G.body+'" fill="'+c[0]+'" opacity=".34"/>'+
+    '<g clip-path="url(#'+clip+')">'+
+      '<rect x="0" y="'+G.fill+'" width="120" height="200" fill="url(#'+id+'l)"/>'+
+      '<ellipse cx="60" cy="'+G.fill+'" rx="40" ry="3.4" fill="#fff" opacity=".3"/>'+
+    '</g>'+
+    '<path d="'+G.body+'" fill="none" stroke="'+c[2]+'" stroke-opacity=".42" stroke-width="1.3"/>'+
+    sub(G.extra)+
+    '<g clip-path="url(#'+clip+')">'+
+      '<rect x="'+G.shine[0]+'" y="'+G.shine[1]+'" width="'+G.shine[2]+'" height="'+G.shine[3]+'" rx="'+(G.shine[2]/2)+'" fill="url(#'+id+'h)"/>'+
+      '<rect x="'+(G.shine[0]+G.shine[2]+3)+'" y="'+(G.shine[1]+8)+'" width="'+(G.shine[2]*0.5)+'" height="'+(G.shine[3]*0.6)+'" rx="'+(G.shine[2]*0.25)+'" fill="#fff" opacity=".2"/>'+
+    '</g>'+
+    labelArt(id, G.label[0], G.label[1], G.label[2], G.label[3], size, variant, full)+
+    '</svg>';
+}
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+function esc(s){
+  return String(s==null?"":s)
+    .split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;")
+    .split('"').join("&quot;").split("'").join("&#39;");
+}
+function deEnt(s){ var d=document.createElement("textarea"); d.innerHTML=String(s); return d.value; }
+function clean(s, max){
+  var out="", str=String(s==null?"":s);
+  for(var i=0;i<str.length;i++){
+    var cc=str.charCodeAt(i);
+    if(cc<32 || cc===127 || (cc>=8203 && cc<=8207) || cc===8232 || cc===8233) continue;
+    out+=str.charAt(i);
+  }
+  return out.trim().slice(0, max||80);
+}
+function money(n){ return "Rs. " + Number(n).toLocaleString("en-PK"); }
+function normPhone(p){
+  var d = String(p||"").replace(/\D/g,"");
+  if(d.indexOf("0092")===0) d=d.slice(4);
+  else if(d.indexOf("92")===0 && d.length>=12) d=d.slice(2);
+  if(d.charAt(0)!=="0") d="0"+d;
+  return d.slice(0,11);
+}
+function validPhone(p){ return /^03\d{9}$/.test(p); }
+function waLink(text){ return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(text); }
+
+var LS={acc:"sofex.trade.accounts.v2", ses:"sofex.trade.session.v2", cart:"sofex.trade.cart.v2", thr:"sofex.trade.throttle.v2", th:"sofex.theme"};
+function lsGet(k,f){ try{ var v=localStorage.getItem(k); return v==null?f:JSON.parse(v); }catch(e){ return f; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ return false; } }
+
+/* ---- crypto ---- */
+var SUBTLE = (window.crypto && window.crypto.subtle) ? window.crypto.subtle : null;
+function hex(buf){
+  var a=new Uint8Array(buf), s="";
+  for(var i=0;i<a.length;i++){ s += (a[i]<16?"0":"") + a[i].toString(16); }
+  return s;
+}
+function randSalt(){
+  var a=new Uint8Array(16);
+  if(window.crypto && window.crypto.getRandomValues) crypto.getRandomValues(a);
+  else for(var i=0;i<16;i++) a[i]=Math.floor(Math.random()*256);
+  return hex(a.buffer);
+}
+function kdf(pw, salt){
+  var enc=new TextEncoder();
+  return SUBTLE.importKey("raw", enc.encode(pw), "PBKDF2", false, ["deriveBits"]).then(function(key){
+    return SUBTLE.deriveBits({name:"PBKDF2", salt:enc.encode(salt), iterations:KDF_ROUNDS, hash:"SHA-256"}, key, 256);
+  }).then(hex);
+}
+function sameHash(a,b){
+  if(typeof a!=="string"||typeof b!=="string"||a.length!==b.length) return false;
+  var d=0; for(var i=0;i<a.length;i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return d===0;
+}
+
+/* ---- throttle ---- */
+function throttleState(id){
+  var t=lsGet(LS.thr,{})[id];
+  if(!t) return {n:0,left:0};
+  if(t.until && t.until>Date.now()) return {n:t.n, left:t.until-Date.now()};
+  if(t.until) return {n:0,left:0};
+  return {n:t.n, left:0};
+}
+function throttleBump(id){
+  var all=lsGet(LS.thr,{}), t=all[id]||{n:0,until:0};
+  if(t.until && t.until<=Date.now()) t={n:0,until:0};
+  t.n++;
+  if(t.n>=MAX_TRIES){ t.until=Date.now()+LOCK_MS; t.n=MAX_TRIES; }
+  all[id]=t; lsSet(LS.thr,all);
+  return t;
+}
+function throttleClear(id){ var all=lsGet(LS.thr,{}); delete all[id]; lsSet(LS.thr,all); }
+function mins(ms){ return Math.max(1, Math.ceil(ms/60000)); }
+
+/* ============================================================
+   State
+   ============================================================ */
+var accounts=lsGet(LS.acc,{}), cart=lsGet(LS.cart,{}), session=lsGet(LS.ses,null);
+if(session && (!session.exp || session.exp < Date.now() || !accounts[session.phone])){ session=null; lsSet(LS.ses,null); }
+var filterCat="all", filterQ="";
+
+function user(){ return session ? (accounts[session.phone]||null) : null; }
+function tierOf(){ var u=user(); return (u && u.status==="approved" && TIERS[u.tier]) ? TIERS[u.tier] : null; }
+function unitPrice(mrp){ var t=tierOf(); return t ? Math.round(mrp*(1-t.off)) : mrp; }
+
+/* ============================================================
+   Catalogue rendering
+   ============================================================ */
+var catalogEl=document.getElementById("catalog"), countEl=document.getElementById("count");
+
+function renderCatalog(){
+  var q=filterQ.trim().toLowerCase();
+  var rows=P.filter(function(p){
+    if(filterCat!=="all" && deEnt(p[3])!==deEnt(filterCat)) return false;
+    if(!q) return true;
+    return (deEnt(p[1])+" "+deEnt(p[2])+" "+p[0]+" "+p[4]+" "+deEnt(p[3])).toLowerCase().indexOf(q)>-1;
+  });
+  var t=tierOf();
+  countEl.textContent = rows.length + (rows.length===1?" product":" products") + ((filterCat==="all" && !q) ? " in production" : " matching");
+
+  if(!rows.length){
+    catalogEl.innerHTML='<p class="empty">Nothing matches &ldquo;'+esc(filterQ)+'&rdquo;. Try a size like <b>450ml</b> or a SKU like <b>SFX-DW450</b>.</p>';
+    return;
+  }
+  catalogEl.innerHTML = rows.map(function(p){
+    var sku=p[0],name=p[1],varnt=p[2],cat=p[3],size=p[4],mrp=p[5],ctn=p[6],shp=p[7],col=p[8],desc=p[9];
+    var tp=unitPrice(mrp);
+    var bar = t
+      ? '<div class="tradebar open"><span>'+esc(t.name)+' &middot; '+(t.off*100)+'% off</span><span class="v">'+money(tp)+'</span></div>'+
+        '<button type="button" class="btn btn-line btn-sm btn-block add" data-add="'+esc(sku)+'">Add carton &middot; '+money(tp*ctn)+'</button>'
+      : '<div class="tradebar shut"><span>Trade rate</span><span>Sign in to view</span></div>';
+    var artHtml = (sku==="SFX-DW450")
+      ? '<img src="img/lemon-fresh-hero.jpg" alt="'+esc(name)+'" loading="lazy" style="position:relative;z-index:1;height:152px;width:auto;object-fit:contain">'
+      : art(shp,col,size,varnt,false);
+    return '<article class="card">'+
+      '<div class="art"><span class="sku">'+esc(sku)+'</span>'+artHtml+'</div>'+
+      '<div class="body">'+
+        '<h3>'+name+'</h3><span class="sub">'+varnt+' &middot; '+size+'</span>'+
+        '<p class="desc">'+desc+'</p>'+
+        '<div class="foot">'+
+          '<span class="price"><small>MRP </small>'+Number(mrp).toLocaleString("en-PK")+'<small> PKR</small></span>'+
+          '<span class="pack">'+ctn+'/carton<br>'+cat+'</span>'+
+        '</div>'+bar+
+      '</div></article>';
+  }).join("");
+}
+
+document.getElementById("chips").addEventListener("click",function(e){
+  var b=e.target.closest(".chip"); if(!b) return;
+  filterCat=b.getAttribute("data-cat");
+  var all=document.querySelectorAll(".chip");
+  for(var i=0;i<all.length;i++) all[i].setAttribute("aria-pressed", String(all[i]===b));
+  renderCatalog();
+});
+document.getElementById("search").addEventListener("input",function(e){ filterQ=e.target.value; renderCatalog(); });
+catalogEl.addEventListener("click",function(e){
+  var b=e.target.closest("[data-add]"); if(!b) return;
+  bump(b.getAttribute("data-add"),1);
+  document.getElementById("portal").scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+/* hero + flagship artwork */
+document.getElementById("hero-art").innerHTML =
+  '<img class="product" src="img/lemon-fresh-hero.jpg" alt="Sofex Lemon Fresh Dishwashing Liquid, 450ml bottle" width="900" height="1200" loading="eager">';
+document.getElementById("flag-swatches").innerHTML =
+  [["lemon","Classic Lemon",true],["orange","Orange Zest",false],["apple","Green Apple",false]].map(function(v){
+    var artHtml = v[2]
+      ? '<img src="img/lemon-fresh-hero.jpg" alt="'+v[1]+'" loading="lazy" style="height:136px;width:auto">'
+      : art("dish",v[0],"450ml",v[1],false);
+    return '<div class="swatch"><div class="art">'+artHtml+'</div>'+
+      '<div class="cap"><b>'+v[1]+'</b><span>450ML &middot; RS. 260</span></div></div>';
+  }).join("");
+
+/* ============================================================
+   Cart
+   ============================================================ */
+function bySku(s){ for(var i=0;i<P.length;i++) if(P[i][0]===s) return P[i]; return null; }
+function totals(){
+  var rows=[], keys=Object.keys(cart);
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i]; if(!(cart[k]>0)) continue;
+    var p=bySku(k); if(!p) continue;
+    var u=unitPrice(p[5]);
+    rows.push({sku:k,p:p,ctns:cart[k],pcs:cart[k]*p[6],unit:u,amt:u*p[6]*cart[k],mrpAmt:p[5]*p[6]*cart[k]});
+  }
+  var sub=0,mrp=0,pcs=0,ctns=0;
+  rows.forEach(function(x){ sub+=x.amt; mrp+=x.mrpAmt; pcs+=x.pcs; ctns+=x.ctns; });
+  return {rows:rows,sub:sub,mrp:mrp,save:mrp-sub,pcs:pcs,ctns:ctns};
+}
+function bump(sku,n){
+  if(!bySku(sku)) return;
+  var v=(cart[sku]||0)+n;
+  if(v<0) v=0; if(v>999) v=999;
+  if(v) cart[sku]=v; else delete cart[sku];
+  lsSet(LS.cart,cart); renderAccount();
+}
+
+/* ============================================================
+   Portal
+   ============================================================ */
+var authBox=document.getElementById("portal-auth"), acctBox=document.getElementById("portal-account"),
+    msgBox=document.getElementById("portal-msg"), stateEl=document.getElementById("portal-state"),
+    tabL=document.getElementById("tab-login"), tabS=document.getElementById("tab-signup"),
+    paneL=document.getElementById("pane-login"), paneS=document.getElementById("pane-signup");
+
+function say(kind,html){ msgBox.innerHTML = html ? '<div class="msg '+kind+'">'+html+'</div>' : ""; }
+function tab(which){
+  var L=(which==="login");
+  tabL.setAttribute("aria-selected",String(L)); tabS.setAttribute("aria-selected",String(!L));
+  paneL.hidden=!L; paneS.hidden=L; say("","");
+}
+tabL.addEventListener("click",function(){tab("login");});
+tabS.addEventListener("click",function(){tab("signup");});
+
+var suPass=document.getElementById("su-pass");
+suPass.addEventListener("input",function(){
+  var v=suPass.value, n=0;
+  if(v.length>=8) n++;
+  if(v.length>=12 || (/[A-Z]/.test(v) && /[a-z]/.test(v))) n++;
+  if(/\d/.test(v) && /[^A-Za-z0-9]/.test(v)) n++;
+  if(v.length<8) n=Math.min(n,1);
+  ["sb1","sb2","sb3"].forEach(function(id,i){
+    document.getElementById(id).className = (i<n) ? ("on"+n) : "";
+  });
+});
+
+var liGo=document.getElementById("li-go"), suGo=document.getElementById("su-go");
+if(!SUBTLE){
+  say("err","This browser cannot hash passwords securely here, so sign-in is disabled. Open the page over HTTPS, or contact the sales desk on WhatsApp.");
+  suGo.setAttribute("aria-disabled","true"); liGo.setAttribute("aria-disabled","true");
+}
+function busy(btn,on,label){
+  btn.setAttribute("aria-disabled", on?"true":"false");
+  btn.textContent = on ? "Please wait..." : label;
+}
+
+paneS.addEventListener("submit",function(e){
+  e.preventDefault(); if(!SUBTLE) return;
+  var f=e.target;
+  var phone=normPhone(f.phone.value);
+  var name=clean(f.name.value,60), biz=clean(f.business.value,80), city=clean(f.city.value,50);
+  var tierKey=TIERS[f.tier.value] ? f.tier.value : "retailer";
+  var pw=f.password.value;
+
+  if(!validPhone(phone)) return say("err","Enter a valid Pakistani mobile number in the form <b>03xx-xxxxxxx</b>.");
+  if(!name || !biz || !city) return say("err","Name, business name and city are all required.");
+  if(pw.length<8) return say("err","Choose a password of at least 8 characters.");
+  if(accounts[phone]) return say("err","An account already exists for "+esc(phone)+". Use the <b>Sign in</b> tab, or WhatsApp the sales desk to reset it.");
+
+  busy(suGo,true);
+  var salt=randSalt();
+  kdf(pw,salt).then(function(h){
+    f.password.value="";
+    accounts[phone]={phone:phone,name:name,business:biz,city:city,tier:tierKey,salt:salt,hash:h,status:"pending",created:Date.now()};
+    if(!lsSet(LS.acc,accounts)){
+      busy(suGo,false,"Submit application");
+      return say("err","This browser is blocking site storage, so the account cannot be saved. Enable site data, or send your details to the sales desk on WhatsApp.");
+    }
+    session={phone:phone, exp:Date.now()+SESSION_MS}; lsSet(LS.ses,session);
+    throttleClear(phone);
+    busy(suGo,false,"Submit application");
+    render();
+  }).catch(function(){
+    busy(suGo,false,"Submit application");
+    say("err","Could not secure your password on this device. Please try another browser.");
+  });
+});
+
+paneL.addEventListener("submit",function(e){
+  e.preventDefault(); if(!SUBTLE) return;
+  var f=e.target, phone=normPhone(f.phone.value), pw=f.password.value;
+  var st=throttleState(phone);
+  if(st.left>0) return say("err","Too many failed attempts. Try again in "+mins(st.left)+" minute(s), or WhatsApp the sales desk.");
+  var a=accounts[phone];
+  busy(liGo,true);
+  kdf(pw, a ? a.salt : "no-such-account-decoy-salt").then(function(h){
+    var ok = !!a && sameHash(h, a.hash);
+    busy(liGo,false,"Sign in");
+    f.password.value="";
+    if(!ok){
+      var t=throttleBump(phone), left=MAX_TRIES-t.n;
+      return say("err","That mobile number and password do not match."+(left>0?" "+left+" attempt(s) left before a 15-minute lock.":" This number is locked for 15 minutes."));
+    }
+    throttleClear(phone);
+    session={phone:phone, exp:Date.now()+SESSION_MS}; lsSet(LS.ses,session);
+    render();
+  }).catch(function(){
+    busy(liGo,false,"Sign in");
+    say("err","Sign-in could not complete on this device. Please try another browser.");
+  });
+});
+
+function renderAccount(){
+  var u=user(); if(!u) return;
+  var t=TIERS[u.tier], pend=(u.status!=="approved"), T=totals();
+  var initial=(u.business||u.name||"S").trim().charAt(0).toUpperCase();
+
+  var head='<div class="acct">'+
+    '<span class="avatar">'+esc(initial)+'</span>'+
+    '<span style="flex:1;min-width:0"><span class="nm">'+esc(u.business)+'</span>'+
+    '<span class="mt">'+esc(u.name)+' &middot; '+esc(u.city)+' &middot; '+esc(u.phone)+'</span></span>'+
+    '<span class="pill '+(pend?"pend":"ok")+'">'+(pend?"Pending":"Verified")+'</span></div>';
+
+  if(pend){
+    var applyTxt="*SOFEX - Distributor application*\n\nBusiness: "+u.business+"\nName: "+u.name+
+      "\nCity/District: "+u.city+"\nMobile: "+u.phone+"\nApplying as: "+t.name+" ("+(t.off*100)+"% off MRP)"+
+      "\nMinimum order: "+money(t.min)+"\n\nPlease verify my business and send my activation code.";
+    var ast=throttleState("code:"+u.phone);
+    acctBox.innerHTML = head +
+      '<div class="msg info">Your application is with the sales desk. Once we verify your business we send an <b>activation code</b> on WhatsApp &mdash; enter it below to unlock '+esc(t.name.toLowerCase())+' rates ('+(t.off*100)+'% off MRP).</div>'+
+      '<a class="btn btn-wa btn-block btn-lg" href="'+esc(waLink(applyTxt))+'" target="_blank" rel="noopener noreferrer">Send application on WhatsApp</a>'+
+      '<div id="code-msg" style="margin-top:16px"></div>'+
+      '<div class="field"><label for="ac-code">Activation code</label>'+
+      '<input id="ac-code" type="text" placeholder="SOFEX-XXXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="40"'+(ast.left>0?" disabled":"")+'></div>'+
+      '<button type="button" class="btn btn-accent btn-block" id="ac-go"'+(ast.left>0?' aria-disabled="true"':"")+'>Activate trade account</button>'+
+      '<p class="hint">Wrong details? <button type="button" id="ac-out">Sign out and register again</button></p>';
+    if(ast.left>0) document.getElementById("code-msg").innerHTML='<div class="msg err">Too many wrong codes. Try again in '+mins(ast.left)+' minute(s).</div>';
+    return;
+  }
+
+  var lines = T.rows.length
+    ? '<div class="lines">'+T.rows.map(function(x){
+        return '<div class="li"><span class="n">'+x.p[1]+'<span>'+x.p[4]+' &middot; '+x.p[6]+'/ctn &middot; '+money(x.unit)+' ea</span></span>'+
+          '<span class="qty"><button type="button" data-q="-1" data-sku="'+esc(x.sku)+'" aria-label="Remove one carton">&minus;</button>'+
+          '<span class="q">'+x.ctns+'</span>'+
+          '<button type="button" data-q="1" data-sku="'+esc(x.sku)+'" aria-label="Add one carton">+</button></span>'+
+          '<span class="amt">'+money(x.amt)+'</span></div>';
+      }).join("")+'</div>'
+    : '<div class="msg info">Your order is empty. Scroll up to the catalogue and press <b>Add carton</b> &mdash; every card now shows your '+esc(t.name.toLowerCase())+' rate.</div>';
+
+  var belowMin = (T.sub>0 && T.sub<t.min);
+  var orderTxt = "*SOFEX - Trade order*\n\nBusiness: "+u.business+"\nName: "+u.name+"\nCity: "+u.city+
+    "\nMobile: "+u.phone+"\nTier: "+t.name+" ("+(t.off*100)+"% off MRP)\n\n*ITEMS*\n"+
+    T.rows.map(function(x,i){
+      return (i+1)+". "+deEnt(x.p[1])+" - "+x.p[4]+"\n   "+x.ctns+" carton(s) x "+x.p[6]+" pcs = "+x.pcs+" pcs"+
+             "\n   @ "+money(x.unit)+"/pc = "+money(x.amt);
+    }).join("\n")+
+    "\n\nCartons: "+T.ctns+"\nPieces: "+T.pcs+"\nValue at MRP: "+money(T.mrp)+
+    "\nTrade discount: -"+money(T.save)+"\n*ORDER TOTAL: "+money(T.sub)+"*\n\nPlease confirm availability and dispatch.";
+
+  acctBox.innerHTML = head +
+    '<div class="stats3">'+
+      '<div class="s3"><div class="v">'+(t.off*100)+'%</div><div class="l">Discount</div></div>'+
+      '<div class="s3"><div class="v">'+T.ctns+'</div><div class="l">Cartons</div></div>'+
+      '<div class="s3"><div class="v">'+T.pcs+'</div><div class="l">Pieces</div></div>'+
+    '</div>'+ lines +
+    (T.rows.length ?
+      '<div class="totals">'+
+        '<div><span>Value at MRP</span><span class="tnum">'+money(T.mrp)+'</span></div>'+
+        '<div class="sv"><span>'+esc(t.name)+' discount</span><span class="tnum">&minus; '+money(T.save)+'</span></div>'+
+        '<div class="gr"><span>Order total</span><span>'+money(T.sub)+'</span></div>'+
+      '</div>'+
+      (belowMin ? '<div class="msg info">Minimum order for a '+esc(t.name.toLowerCase())+' is '+money(t.min)+'. Add '+money(t.min-T.sub)+' more to send it.</div>' : "")+
+      '<a class="btn btn-wa btn-block btn-lg" href="'+esc(waLink(orderTxt))+'" target="_blank" rel="noopener noreferrer"'+(belowMin?' aria-disabled="true"':"")+'>Send order on WhatsApp</a>'+
+      '<button type="button" class="btn btn-quiet btn-block btn-sm" id="cart-clear" style="margin-top:8px">Clear order</button>'
+      : "")+
+    '<p class="hint">Signed in as '+esc(u.phone)+' &middot; session ends after 12 hours. <button type="button" id="ac-out">Sign out</button></p>';
+}
+
+acctBox.addEventListener("click",function(e){
+  var q=e.target.closest("[data-q]");
+  if(q){ bump(q.getAttribute("data-sku"), Number(q.getAttribute("data-q"))); return; }
+  if(e.target.id==="ac-out"){ session=null; lsSet(LS.ses,null); render(); return; }
+  if(e.target.id==="cart-clear"){ cart={}; lsSet(LS.cart,cart); renderAccount(); renderCatalog(); return; }
+  if(e.target.id==="ac-go"){
+    var u=user(); if(!u || !SUBTLE) return;
+    var key="code:"+u.phone, st=throttleState(key), box=document.getElementById("code-msg");
+    if(st.left>0){ box.innerHTML='<div class="msg err">Too many wrong codes. Try again in '+mins(st.left)+' minute(s).</div>'; return; }
+    var v=clean(document.getElementById("ac-code").value,40).toUpperCase();
+    if(!v){ box.innerHTML='<div class="msg err">Enter the activation code the sales desk sent you.</div>'; return; }
+    var btn=e.target;
+    btn.setAttribute("aria-disabled","true"); btn.textContent="Checking...";
+    kdf(v, ACTIVATION_SALT).then(function(h){
+      btn.setAttribute("aria-disabled","false"); btn.textContent="Activate trade account";
+      if(!sameHash(h, ACTIVATION_HASH)){
+        var t2=throttleBump(key), left=MAX_TRIES-t2.n;
+        box.innerHTML='<div class="msg err">That code is not valid.'+(left>0?" "+left+" attempt(s) left.":" Locked for 15 minutes.")+' Codes come from the Sofex sales desk on WhatsApp.</div>';
+        return;
+      }
+      throttleClear(key);
+      accounts[u.phone].status="approved"; accounts[u.phone].approved=Date.now();
+      lsSet(LS.acc,accounts); render();
+    }).catch(function(){
+      btn.setAttribute("aria-disabled","false"); btn.textContent="Activate trade account";
+      box.innerHTML='<div class="msg err">Could not check the code on this device. Please try another browser.</div>';
+    });
+  }
+});
+
+function render(){
+  var u=user();
+  authBox.hidden=!!u; acctBox.hidden=!u;
+  stateEl.textContent = u ? (u.status==="approved" ? TIERS[u.tier].name : "Pending approval") : "Signed out";
+  if(u) renderAccount(); else tab("login");
+  renderCatalog();
+}
+
+/* ============================================================
+   Chrome
+   ============================================================ */
+var root=document.documentElement;
+var saved=lsGet(LS.th,null);
+if(saved==="dark"||saved==="light") root.setAttribute("data-theme",saved);
+document.getElementById("theme-toggle").addEventListener("click",function(){
+  var cur=root.getAttribute("data-theme");
+  var sysDark=window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  var next = cur ? (cur==="dark"?"light":"dark") : (sysDark?"light":"dark");
+  root.setAttribute("data-theme",next); lsSet(LS.th,next);
+});
+
+var navBtn=document.getElementById("nav-toggle"), mobnav=document.getElementById("mobnav");
+navBtn.addEventListener("click",function(){
+  var open = mobnav.getAttribute("data-open") !== "true";
+  mobnav.setAttribute("data-open", String(open));
+  navBtn.setAttribute("aria-expanded", String(open));
+});
+mobnav.addEventListener("click",function(e){
+  if(e.target.tagName==="A"){ mobnav.setAttribute("data-open","false"); navBtn.setAttribute("aria-expanded","false"); }
+});
+
+render();
+})();
+</script>
